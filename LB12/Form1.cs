@@ -37,41 +37,32 @@ namespace LB12
                 DirectChoise();
             
         }
-        //private void BuiltInFunc()
-        //{
-        //    int size_arr = Convert.ToInt32(numericUpDown1.Value);
-        //    int[] newarr = array;
-        //    int StartTime = Environment.TickCount;
-        //    Array.Sort(newarr);
-        //    int EndTime = Environment.TickCount - StartTime;
-        //    dataGridView1.Rows[6].Cells[2].Value = '-';
-        //    dataGridView1.Rows[6].Cells[3].Value = '-';
-        //    dataGridView1.Rows[6].Cells[4].Value = EndTime;
-        //    dataGridView1.Rows[6].Cells[5].Value = "Да";
-        //}
         private void DirectChoise()
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             int[] unarray = array;
             int count_per = 0, compare = 0;
             int StartTime = Environment.TickCount;
-            for (int i = Size_Array - 1; i >= 0; i--)
+            for (int i = Size_Array - 1; i > 0; i--)
             {
+                int max = unarray[i];
                 for (int j = 0; j < i; j++)
                 {
-                    if (unarray[j] > unarray[i])
+                   if (unarray[j] > max)
                     {
-                        count_per++;
-                        (unarray[j], unarray[i]) = (unarray[i], unarray[j]);
+                        
+                        max = unarray[j];
                     }
                     compare++;
                 }
-            
+                count_per++;
+                (unarray[i], max) = (max, unarray[i]);
+                
             }
             int EndTime = Environment.TickCount - StartTime;
             bool sorted = true;
-            for (int i = 0; i < Size_Array - 1; i++)
-                if (unarray[i] > unarray[i + 1])
+            for(int j=0;j<Size_Array-1;j++)
+                if (unarray[j] > unarray[j + 1])
                 {
                     sorted = false;
                     break;
@@ -86,28 +77,26 @@ namespace LB12
             int[] unsortedarray = array;
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             int count_per = 0, compare = 0;
+            bool sorted = false;
             int StartTime = Environment.TickCount;
             {
                 for (int i = 0; i < Size_Array - 1; i++)
                 {
+                    sorted = true;
                     for (int j = 0; j < Size_Array - i - 1; j++)
                     {
                         if (unsortedarray[j] > unsortedarray[j+1])
                         {
+                            sorted = false;
                             count_per++;
                             (unsortedarray[j], unsortedarray[j+1]) = (unsortedarray[j+1], unsortedarray[j]);
                         }
                         compare++;
                     }
+                    if (sorted)
+                        break;
                 }
             }
-            bool sorted = true;
-            for (int i = 0; i < Size_Array - 1; i++)
-                if (unsortedarray[i] > unsortedarray[i + 1])
-                {
-                    sorted = false;
-                    break;
-                }
             int EndTime = (Environment.TickCount - StartTime);
             dataGridView1.Rows[0].Cells[2].Value = compare;
             dataGridView1.Rows[0].Cells[3].Value = count_per;
@@ -131,6 +120,7 @@ namespace LB12
         private void Form1_Load(object sender, EventArgs e)
         {
             tablewrite();
+            
         }
     }
 }
