@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            panel1 = new Panel();
             numericUpDown1 = new NumericUpDown();
             label2 = new Label();
             button1 = new Button();
@@ -51,21 +50,13 @@
             label1.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(347, 9);
             label1.Name = "label1";
-            label1.Size = new Size(315, 30);
+            label1.Size = new Size(351, 30);
             label1.TabIndex = 1;
-            label1.Text = "Лабораторная работа №12";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ActiveCaptionText;
-            panel1.Location = new Point(0, 42);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(929, 10);
-            panel1.TabIndex = 2;
+            label1.Text = "Лабораторная работа №12-13";
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(606, 344);
+            numericUpDown1.Location = new Point(534, 344);
             numericUpDown1.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(160, 31);
@@ -76,7 +67,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(403, 342);
+            label2.Location = new Point(331, 342);
             label2.Name = "label2";
             label2.Size = new Size(197, 30);
             label2.TabIndex = 4;
@@ -84,7 +75,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(867, 342);
+            button1.Location = new Point(846, 344);
             button1.Name = "button1";
             button1.Size = new Size(83, 31);
             button1.TabIndex = 5;
@@ -106,10 +97,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { checkbox, Сравнения, вв, Column1, Column2, Column3 });
-            dataGridView1.Location = new Point(2, 45);
+            dataGridView1.Location = new Point(2, 42);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(948, 290);
+            dataGridView1.Size = new Size(924, 271);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -156,23 +147,22 @@
             Column3.HeaderText = "Отсортировано?";
             Column3.MinimumWidth = 8;
             Column3.Name = "Column3";
-            Column3.Width = 180;
+            Column3.Width = 150;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(953, 381);
+            ClientSize = new Size(934, 381);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(numericUpDown1);
-            Controls.Add(panel1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "Form1";
-            Text = "Osin_LR12";
+            Text = "Osin_LR12-13";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -182,7 +172,6 @@
 
         #endregion
         private Label label1;
-        private Panel panel1;
         private NumericUpDown numericUpDown1;
         private Label label2;
         private Button button1;
