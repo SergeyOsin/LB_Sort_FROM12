@@ -48,11 +48,7 @@ namespace LB12
                 int max = unarray[i];
                 for (int j = 0; j < i; j++)
                 {
-                   if (unarray[j] > max)
-                    {
-                        
-                        max = unarray[j];
-                    }
+                    max = Math.Max(max, unarray[j]);
                     compare++;
                 }
                 count_per++;
