@@ -33,19 +33,21 @@ namespace LB12
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             Random rd = new Random();
             for (int i = 0; i < SIZE; i++) array[i] = rd.Next(0, SIZE);
+            int[] arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value))
-                BubbleSort(Size_Array);
+                BubbleSort(Size_Array,arrayCopy);
+            arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
-                DirectConnection(Size_Array);
+                DirectConnection(Size_Array,arrayCopy);
+            arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
-                ChooseSort(Size_Array);
+                ChooseSort(Size_Array,arrayCopy);
             
         }
 
-        private void BubbleSort(int Size_Array)
+         private void BubbleSort(int Size_Array, int[]unsortedarray)
         {
-            int[] unsortedarray = array;
-
+            
             int count_per = 0, compare = 0;
             bool sorted = false;
             int StartTime = Environment.TickCount;
@@ -55,11 +57,11 @@ namespace LB12
                     sorted = true;
                     for (int j = 0; j < Size_Array - i - 1; j++)
                     {
-                        if (unsortedarray[j] > unsortedarray[j + 1])
+                        if (unsortedarray[j] > unsortedarray[j+1])
                         {
                             sorted = false;
                             count_per++;
-                            (unsortedarray[j], unsortedarray[j + 1]) = (unsortedarray[j + 1], unsortedarray[j]);
+                            (unsortedarray[j], unsortedarray[j+1]) = (unsortedarray[j+1], unsortedarray[j]);
                         }
                         compare++;
                     }
@@ -73,9 +75,9 @@ namespace LB12
             dataGridView1.Rows[0].Cells[4].Value = EndTime;
             dataGridView1.Rows[0].Cells[5].Value = (sorted) ? "Да" : "Нет";
         }
-        private void DirectConnection(int Size_Array)
+        private void DirectConnection(int Size_Array, int[] unarray)
         { 
-            int[] unarray = array;
+            
             int count_per = 0, compare = 0;
             int StartTime = Environment.TickCount;
             for (int i = Size_Array - 1; i > 0; i--)
@@ -104,9 +106,8 @@ namespace LB12
             dataGridView1.Rows[1].Cells[5].Value = (sorted) ? "Да" : "Нет";
         }
        
-        private void ChooseSort(int Size_Array)
+        private void ChooseSort(int Size_Array, int[] unsortedarray1)
         {
-            int[] unsortedarray1 = array;
             int count_per = 0, compare = 0;
             int StartTime = Environment.TickCount;
             for(int i = 1; i < Size_Array; i++)
