@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -112,19 +113,17 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for(int i = 1; i < Size_Array; i++)
             {
-                for(int j = i; j > 0; j--)
+                for (int j = i;  j > 0; j--)
                 {
-                    if (unsortedarray1[j] < unsortedarray1[j-1])
+                    if (unsortedarray1[j] < unsortedarray1[j - 1])
                     {
                         compare++; count_per++;
-                        (unsortedarray1[j-1], unsortedarray1[j]) = (unsortedarray1[j], unsortedarray1[j-1]);
                     }
-                    else
-                    {
-                        compare++;
-                        break;
-                    }
+                    else break;
+                    (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
                 }
+                count_per++;
+                
             }
             int EndTime = Environment.TickCount - StartTime;
             bool sorted = true;
