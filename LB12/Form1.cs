@@ -32,6 +32,64 @@ namespace LB12
         private void button2_Click(object sender, EventArgs e)
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
+            Random rd = new Random();
+            for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, SIZE);
+            int[] arr_1 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value))
+                BubbleSort(Size_Array, arr_1);
+            int[] arr_2 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
+                DirectConnection(Size_Array, arr_2);
+            
+        }
+        private void BubbleSort(int Size_Array, int[] unsortedarray)
+        {
+            int count_per = 0, compare = 0;
+            bool sorted = true;
+            int StartTime = Environment.TickCount;
+            {
+                for (int i = 0; i < Size_Array - 1; i++)
+                {
+                    for (int j = 0; j < Size_Array - i - 1; j++)
+                    {
+                        if (unsortedarray[j] > unsortedarray[j + 1])
+                        {
+                            sorted = false;
+                            count_per++;
+                            (unsortedarray[j], unsortedarray[j + 1]) = (unsortedarray[j + 1], unsortedarray[j]);
+                        }
+                        compare++;
+                    }
+                    if (sorted)
+                        break;
+                    sorted = true;
+                }
+            }
+            int EndTime = (Environment.TickCount - StartTime);
+            dataGridView1.Rows[0].Cells[2].Value = compare;
+            dataGridView1.Rows[0].Cells[3].Value = count_per;
+            dataGridView1.Rows[0].Cells[4].Value = EndTime;
+        }
+        private void DirectConnection(int Size_Array, int[] unarray)
+        {
+
+            int count_per = 0, compare = 0;
+            int StartTime = Environment.TickCount;
+            for (int i = Size_Array - 1; i > 0; i--)
+            {
+                int max = array[i];
+                for (int j = 0; j < i; j++)
+                {
+                    max = Math.Max(max, unarray[j]);
+                    compare++;
+                }
+                count_per++;
+                (unarray[i], max) = (max, unarray[i]);
+            }
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[1].Cells[2].Value = compare;
+            dataGridView1.Rows[1].Cells[3].Value = count_per;
+            dataGridView1.Rows[1].Cells[4].Value = EndTime;
         }
         private void tablewrite()
         {
