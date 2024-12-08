@@ -40,7 +40,9 @@ namespace LB12
             int[] arr_2 = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
                 DirectConnection(Size_Array, arr_2);
-            
+            int[] arr_3 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
+                ChooseSort(Size_Array, arr_3);
         }
         private void BubbleSort(int Size_Array, int[] unsortedarray)
         {
@@ -90,6 +92,29 @@ namespace LB12
             dataGridView1.Rows[1].Cells[2].Value = compare;
             dataGridView1.Rows[1].Cells[3].Value = count_per;
             dataGridView1.Rows[1].Cells[4].Value = EndTime;
+        }
+        private void ChooseSort(int Size_Array, int[] unsortedarray1)
+        {
+            int count_per = 0, compare = 0;
+            int StartTime = Environment.TickCount;
+            for (int i = 1; i < Size_Array; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    if (unsortedarray1[j] < unsortedarray1[j - 1])
+                    {
+                        compare++; count_per++;
+                    }
+                    else break;
+                    (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
+                }
+                count_per++;
+
+            }
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[2].Cells[2].Value = compare;
+            dataGridView1.Rows[2].Cells[3].Value = count_per;
+            dataGridView1.Rows[2].Cells[4].Value = EndTime;
         }
         private void tablewrite()
         {
