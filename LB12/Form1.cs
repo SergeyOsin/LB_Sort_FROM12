@@ -43,19 +43,16 @@ namespace LB12
             arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
                 ChooseSort(Size_Array,arrayCopy);
-            
         }
 
          private void BubbleSort(int Size_Array, int[]unsortedarray)
         {
-            
             int count_per = 0, compare = 0;
-            bool sorted = false;
+            bool sorted = true;
             int StartTime = Environment.TickCount;
             {
                 for (int i = 0; i < Size_Array - 1; i++)
                 {
-                    sorted = true;
                     for (int j = 0; j < Size_Array - i - 1; j++)
                     {
                         if (unsortedarray[j] > unsortedarray[j+1])
@@ -68,13 +65,13 @@ namespace LB12
                     }
                     if (sorted)
                         break;
+                    sorted = true;
                 }
             }
             int EndTime = (Environment.TickCount - StartTime);
             dataGridView1.Rows[0].Cells[2].Value = compare;
             dataGridView1.Rows[0].Cells[3].Value = count_per;
             dataGridView1.Rows[0].Cells[4].Value = EndTime;
-            dataGridView1.Rows[0].Cells[5].Value = (sorted) ? "Да" : "Нет";
         }
         private void DirectConnection(int Size_Array, int[] unarray)
         { 
@@ -83,7 +80,7 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for (int i = Size_Array - 1; i > 0; i--)
             {
-                int max = unarray[i];
+                int max = array[i];
                 for (int j = 0; j < i; j++)
                 {
                     max = Math.Max(max, unarray[j]);
@@ -91,22 +88,12 @@ namespace LB12
                 }
                 count_per++;
                 (unarray[i], max) = (max, unarray[i]);
-                
             }
             int EndTime = Environment.TickCount - StartTime;
-            bool sorted = true;
-            for(int j=0;j<Size_Array-1;j++)
-                if (unarray[j] > unarray[j + 1])
-                {
-                    sorted = false;
-                    break;
-                }
             dataGridView1.Rows[1].Cells[2].Value = compare;
             dataGridView1.Rows[1].Cells[3].Value = count_per;
             dataGridView1.Rows[1].Cells[4].Value = EndTime;
-            dataGridView1.Rows[1].Cells[5].Value = (sorted) ? "Да" : "Нет";
         }
-       
         private void ChooseSort(int Size_Array, int[] unsortedarray1)
         {
             int count_per = 0, compare = 0;
@@ -126,36 +113,23 @@ namespace LB12
                 
             }
             int EndTime = Environment.TickCount - StartTime;
-            bool sorted = true;
-            for(int i=0;i<Size_Array-1;i++)
-                if (unsortedarray1[i] > unsortedarray1[i +1])
-                {
-                    sorted = false;
-                    break;
-                }
             dataGridView1.Rows[2].Cells[2].Value = compare;
             dataGridView1.Rows[2].Cells[3].Value = count_per;
             dataGridView1.Rows[2].Cells[4].Value = EndTime;
-            dataGridView1.Rows[2].Cells[5].Value = (sorted) ? "Да" : "Нет";
         }
         private void tablewrite()
         {
             dataGridView1.RowCount = 7;
-            dataGridView1.ColumnCount = 6;
-            dataGridView1.Rows[0].Cells[1].Value = "Обмен";
-            dataGridView1.Rows[1].Cells[1].Value = "Выбор";
-            dataGridView1.Rows[2].Cells[1].Value = "Включение";
-            dataGridView1.Rows[3].Cells[1].Value = "Шелла";
-            dataGridView1.Rows[4].Cells[1].Value = "Быстрая";
-            dataGridView1.Rows[5].Cells[1].Value = "Линейная";
-            dataGridView1.Rows[6].Cells[1].Value = "Встроенная";
+            dataGridView1.ColumnCount = 5;
+            string[] sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+                dataGridView1.Rows[i].Cells[1].Value = sorts[i];
             dataGridView1.Columns[1].DefaultCellStyle.BackColor = Color.CornflowerBlue;
             dataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.CornflowerBlue;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             tablewrite();
-            
         }
     }
 }
