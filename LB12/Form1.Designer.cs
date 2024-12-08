@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
             label2 = new Label();
@@ -55,7 +56,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(534, 330);
+            numericUpDown1.Location = new Point(525, 322);
             numericUpDown1.Maximum = new decimal(new int[] { 25000, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -67,7 +68,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(331, 334);
+            label2.Location = new Point(322, 322);
             label2.Name = "label2";
             label2.Size = new Size(197, 30);
             label2.TabIndex = 4;
@@ -75,19 +76,19 @@
             // 
             // button1
             // 
-            button1.Location = new Point(803, 329);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.Location = new Point(804, 315);
             button1.Name = "button1";
-            button1.Size = new Size(105, 31);
+            button1.Size = new Size(104, 42);
             button1.TabIndex = 5;
-            button1.Text = "Выход";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(2, 329);
+            button2.Location = new Point(2, 315);
             button2.Name = "button2";
-            button2.Size = new Size(131, 31);
+            button2.Size = new Size(157, 42);
             button2.TabIndex = 6;
             button2.Text = "Сортировать";
             button2.UseVisualStyleBackColor = true;
@@ -146,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(908, 373);
+            ClientSize = new Size(910, 360);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
