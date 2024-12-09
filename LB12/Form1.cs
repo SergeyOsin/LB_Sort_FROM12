@@ -35,6 +35,7 @@ namespace LB12
         }
         private void tablewrite()
         {
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowCount = 7;
             dataGridView1.ColumnCount = 5;
             string[] sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
