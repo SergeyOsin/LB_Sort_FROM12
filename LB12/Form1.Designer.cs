@@ -52,11 +52,11 @@
             label1.Name = "label1";
             label1.Size = new Size(351, 30);
             label1.TabIndex = 1;
-            label1.Text = "Лабораторная работа №12-13";
+            label1.Text = "Лабораторная работа №12-14";
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(523, 369);
+            numericUpDown1.Location = new Point(523, 329);
             numericUpDown1.Maximum = new decimal(new int[] { 25000, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -68,7 +68,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(320, 367);
+            label2.Location = new Point(320, 330);
             label2.Name = "label2";
             label2.Size = new Size(197, 30);
             label2.TabIndex = 4;
@@ -77,7 +77,7 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(804, 358);
+            button1.Location = new Point(804, 322);
             button1.Name = "button1";
             button1.Size = new Size(104, 42);
             button1.TabIndex = 5;
@@ -86,7 +86,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(2, 362);
+            button2.Location = new Point(2, 325);
             button2.Name = "button2";
             button2.Size = new Size(157, 42);
             button2.TabIndex = 6;
@@ -101,7 +101,7 @@
             dataGridView1.Location = new Point(2, 42);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(906, 295);
+            dataGridView1.Size = new Size(906, 268);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -147,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(910, 403);
+            ClientSize = new Size(910, 372);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
