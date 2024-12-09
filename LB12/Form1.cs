@@ -114,6 +114,7 @@ namespace LB12
         
         private void tablewrite()
         {
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowCount = 7;
             dataGridView1.ColumnCount = 6;
             dataGridView1.Rows[0].Cells[1].Value = "Ξαμεν";
