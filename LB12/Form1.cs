@@ -48,6 +48,10 @@ namespace LB12
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
                 ChooseSort(Size_Array, arrayCopy);
             else clearcells(2);
+            int[] arr2 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[3].Cells[0].Value))
+                Sort_Shell(Size_Array, arr2);
+            else clearcells(3);
         }
          private void BubbleSort(int Size_Array, int[]unarray)
         {
@@ -118,7 +122,36 @@ namespace LB12
             dataGridView1.Rows[2].Cells[3].Value = count_per;
             dataGridView1.Rows[2].Cells[4].Value = EndTime;
         }
-        
+        private void Sort_Shell(int Size_ar, int[] arr1)
+        {
+            int step = Size_ar / 2;
+            int compare = 0, count_per = 0;
+            int StartTime = Environment.TickCount;
+            while (step > 0)
+            {
+                for(int i = 0; i + step < Size_ar; i++)
+                {
+                    compare++;
+                    if (arr1[i] > arr1[step + i])
+                    {
+                        count_per++;
+                        (arr1[i], arr1[step + i]) = (arr1[step + i], arr1[i]);
+                    }
+                }
+                step /= 2;
+            }
+            int EndTime = Environment.TickCount;
+            bool sorted = true;
+            for(int i = 0; i < Size_ar - 1; i++)
+            {
+                if (arr1[i] > arr1[i + 1])
+                {
+                    sorted = false;
+                    break;
+                }
+            }
+            dataGridView1.Rows[3].Cells[4].Value = sorted;
+        }
         private void tablewrite()
         {
             dataGridView1.AllowUserToAddRows = false;

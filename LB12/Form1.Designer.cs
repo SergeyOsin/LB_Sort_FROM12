@@ -52,7 +52,7 @@
             label1.Name = "label1";
             label1.Size = new Size(351, 30);
             label1.TabIndex = 1;
-            label1.Text = "Лабораторная работа №12-14";
+            label1.Text = "Лабораторная работа №12-17";
             // 
             // numericUpDown1
             // 
@@ -156,7 +156,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "Form1";
-            Text = "Osin_LR12-13";
+            Text = "Osin_LR12-17";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
