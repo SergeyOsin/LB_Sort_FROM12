@@ -26,21 +26,28 @@ namespace LB12
         {
            
         }
-
+        private void clearcells(int id)
+        {
+            for (int i = 2; i < dataGridView1.ColumnCount; i++)
+                dataGridView1.Rows[id].Cells[i].Value = " ";
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             Random rd = new Random();
             for (int i = 0; i < SIZE; i++) array[i] = rd.Next(0, SIZE);
             int[] arr = (int[])array.Clone();
-            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value))
-                BubbleSort(Size_Array,arr);
+            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) 
+                BubbleSort(Size_Array, arr);
+            else clearcells(0);
             int[] arr_1 = (int[])array.Clone();
-            int[] arrayCopy = (int[])array.Clone();  
+            int[] arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
                 DirectConnection(Size_Array, arr_1);
+            else clearcells(1);
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
                 ChooseSort(Size_Array, arrayCopy);
+            else clearcells(2);
         }
          private void BubbleSort(int Size_Array, int[]unarray)
         {
