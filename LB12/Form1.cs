@@ -37,8 +37,7 @@ namespace LB12
             Random rd = new Random();
             for (int i = 0; i < SIZE; i++) array[i] = rd.Next(0, SIZE);
             int[] arr = (int[])array.Clone();
-            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) 
-                BubbleSort(Size_Array, arr);
+            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) BubbleSort(Size_Array, arr);
             else clearcells(0);
             int[] arr_1 = (int[])array.Clone();
             int[] arrayCopy = (int[])array.Clone();
@@ -107,15 +106,15 @@ namespace LB12
             {
                 for (int j = i;  j > 0; j--)
                 {
+                    compare++;
                     if (unsortedarray1[j] < unsortedarray1[j - 1])
                     {
-                        compare++; count_per++;
+                        (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
+                         count_per++;
                     }
-                    else break;
-                    (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
+                    else break;                    
                 }
                 count_per++;
-                
             }
             int EndTime = Environment.TickCount - StartTime;
             dataGridView1.Rows[2].Cells[2].Value = compare;
