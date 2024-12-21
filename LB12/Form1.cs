@@ -103,12 +103,14 @@ namespace LB12
             {
                 for (int j = i;  j > 0; j--)
                 {
+                    compare++;
                     if (unsortedarray1[j] < unsortedarray1[j - 1])
                     {
-                        compare++; count_per++;
+                         count_per++;
+                        (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
                     }
                     else break;
-                    (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
+                    
                 }
                 count_per++;
                 
