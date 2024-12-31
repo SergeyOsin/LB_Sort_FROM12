@@ -57,12 +57,12 @@
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(523, 329);
-            numericUpDown1.Maximum = new decimal(new int[] { 25000, 0, 0, 0 });
+            numericUpDown1.Maximum = new decimal(new int[] { 25000000, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(160, 31);
             numericUpDown1.TabIndex = 3;
-            numericUpDown1.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            numericUpDown1.Value = new decimal(new int[] { 1000000, 0, 0, 0 });
             // 
             // label2
             // 
