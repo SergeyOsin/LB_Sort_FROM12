@@ -26,6 +26,7 @@ namespace LB12
         {
            
         }
+        
         private void clearcells(int id)
         {
             for (int i = 2; i < dataGridView1.ColumnCount; i++)
@@ -35,7 +36,7 @@ namespace LB12
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             Random rd = new Random();
-            for (int i = 0; i < SIZE; i++) array[i] = rd.Next(0, SIZE);
+            for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, Size_Array);
             int[] arr = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) BubbleSort(Size_Array, arr);
             else clearcells(0);
@@ -51,6 +52,10 @@ namespace LB12
             if (Convert.ToBoolean(dataGridView1.Rows[3].Cells[0].Value))
                 Sort_Shell(Size_Array, arr2);
             else clearcells(3);
+            int[] arr4 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[5].Cells[0].Value))
+                LineSort(Size_Array, arr4);
+            else clearcells(5);
         }
          private void BubbleSort(int Size_Array, int[]unarray)
         {
@@ -121,7 +126,35 @@ namespace LB12
             dataGridView1.Rows[2].Cells[3].Value = count_per;
             dataGridView1.Rows[2].Cells[4].Value = EndTime;
         }
-        
+        private void LineSort(int Size_ar, int[] arr2)
+        {
+            int[] arrayB = new int[Size_ar];
+            int compare = 0, count_change = 0;
+            int StartTime = Environment.TickCount;
+            for (int i = 0; i < Size_ar; i++)
+            {
+                arrayB[arr2[i]]++;
+                count_change++;
+            }
+            for (int j = 0, ind = 0; j < Size_ar; j++)
+            {
+                compare++;
+                if (arrayB[j] > 0)
+                {
+
+                    for (int k = ind; k < arrayB[j] + ind; k++)
+                    {
+                        arr2[k] = j;
+                        count_change++;
+                    }
+                    ind += arrayB[j];
+                }
+            }
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[5].Cells[2].Value = compare;
+            dataGridView1.Rows[5].Cells[3].Value = count_change;
+            dataGridView1.Rows[5].Cells[4].Value = EndTime;
+        }
         private void Sort_Shell(int Size_ar, int[] arr1)
         {
             int compare = 0, count_per = 0;
