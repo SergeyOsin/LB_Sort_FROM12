@@ -5,8 +5,6 @@ namespace LB12
 {
     public partial class Form1 : Form
     {
-        const int SIZE = 100000;
-        int[] array = new int[SIZE];
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +33,7 @@ namespace LB12
         private void button2_Click(object sender, EventArgs e)
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
+            int[] array = new int[Size_Array];
             Random rd = new Random();
             for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, Size_Array);
             int[] arr = (int[])array.Clone();
@@ -56,6 +55,10 @@ namespace LB12
             if (Convert.ToBoolean(dataGridView1.Rows[5].Cells[0].Value))
                 LineSort(Size_Array, arr4);
             else clearcells(5);
+            int[] arr5 = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[6].Cells[0].Value))
+                BuildInFunction(Size_Array, arr5);
+            else clearcells(6);
         }
          private void BubbleSort(int Size_Array, int[]unarray)
         {
@@ -89,7 +92,7 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for (int i = Size_Array - 1; i > 0; i--)
             {
-                int max = array[i];
+                int max = unarray[i];
                 for (int j = 0; j < i; j++)
                 {
                     max = Math.Max(max, unarray[j]);
@@ -141,8 +144,7 @@ namespace LB12
                 compare++;
                 if (arrayB[j] > 0)
                 {
-
-                    for (int k = ind; k < arrayB[j] + ind; k++)
+                    for (int k = ind; k < arrayB[j]+ind; k++)
                     {
                         arr2[k] = j;
                         count_change++;
@@ -154,6 +156,15 @@ namespace LB12
             dataGridView1.Rows[5].Cells[2].Value = compare;
             dataGridView1.Rows[5].Cells[3].Value = count_change;
             dataGridView1.Rows[5].Cells[4].Value = EndTime;
+        }
+        private void BuildInFunction(int Size_ar, int[] arr1)
+        {
+            int StartTime = Environment.TickCount;
+            Array.Sort(arr1);
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[6].Cells[2].Value = "-";
+            dataGridView1.Rows[6].Cells[3].Value = "-";
+            dataGridView1.Rows[6].Cells[4].Value = EndTime;
         }
         private void Sort_Shell(int Size_ar, int[] arr1)
         {
