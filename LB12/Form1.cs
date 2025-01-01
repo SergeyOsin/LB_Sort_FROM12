@@ -5,8 +5,6 @@ namespace LB12
 {
     public partial class Form1 : Form
     {
-        const int SIZE = 100000;
-        int[] array = new int[SIZE];
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +33,8 @@ namespace LB12
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
             Random rd = new Random();
-            for (int i = 0; i < SIZE; i++) array[i] = rd.Next(0, SIZE);
+            int[] array = new int[Size_Array];
+            for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, Size_Array);
             int[] arr = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) BubbleSort(Size_Array, arr);
             else clearcells(0);
@@ -84,7 +83,7 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for (int i = Size_Array - 1; i > 0; i--)
             {
-                int max = array[i];
+                int max = unarray[i];
                 for (int j = 0; j < i; j++)
                 {
                     max = Math.Max(max, unarray[j]);
@@ -104,7 +103,7 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for(int i = 1; i < Size_Array; i++)
             {
-                for (int j = i;  j > 0; j--)
+                for (int j = i;  j >0; j--)
                 {
                     compare++;
                     if (unsortedarray1[j] < unsortedarray1[j - 1])
@@ -125,19 +124,31 @@ namespace LB12
         private void Sort_Shell(int Size_ar, int[] arr1)
         {
             int compare = 0, count_per = 0;
+            int count_steps = (int)Math.Log2(Size_ar) - 1;
+            int step = (int)Math.Pow(2, count_steps) - 1;
             int StartTime = Environment.TickCount;
-            
-            int EndTime = Environment.TickCount;
-            bool sorted = true;
-            for(int i = 0; i < Size_ar - 1; i++)
+            while (step > 0)
             {
-                if (arr1[i] > arr1[i + 1])
+                for(int i = step; i < Size_ar; i++)
                 {
-                    sorted = false;
-                    break;
+                    for (int j = i;j>=step;j-=step)
+                    {
+                        compare++;
+                        if (arr1[j] < arr1[j - step])
+                        {
+                            count_per++;
+                            (arr1[j], arr1[j - step]) = (arr1[j - step], arr1[j]);
+                        }
+                        else break;
+                    }
+                    count_per++;
                 }
+                step /= 2;
             }
-            dataGridView1.Rows[3].Cells[4].Value = sorted;
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[3].Cells[2].Value = compare;
+            dataGridView1.Rows[3].Cells[3].Value = count_per;
+            dataGridView1.Rows[3].Cells[4].Value = EndTime;
         }
         private void tablewrite()
         {
