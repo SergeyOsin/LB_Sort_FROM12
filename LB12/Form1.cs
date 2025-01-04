@@ -164,11 +164,11 @@ namespace LB12
                 while (arr3[left1] < arr3[middle])
                     left1++;
                 while (arr3[right1] > arr3[middle])
-                    right--;
+                    right1--;
                 (arr3[left1], arr3[right1]) = (arr3[right1], arr3[left1]);
             }
-            QuickSort(arr3,left, right1);
-            QuickSort(arr3, left1, right);
+            if (left<right1) QuickSort(arr3,left, right1);
+            if(left1<right) QuickSort(arr3, left1, right);
         }
         private void tablewrite()
         {
