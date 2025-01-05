@@ -52,7 +52,12 @@ namespace LB12
             else clearcells(3);
             int[] arr3 = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[4].Cells[0].Value))
-                QuickSort(arr3,0,Size_Array-1);
+            {
+                int StartTime = Environment.TickCount;
+                QuickSort(arr3, 0, Size_Array - 1, 0, 0);
+                int EndTime = Environment.TickCount - StartTime;
+                dataGridView1.Rows[4].Cells[4].Value = EndTime;
+            }
             else clearcells(4);
         }
          private void BubbleSort(int Size_Array, int[]unarray)
@@ -154,21 +159,33 @@ namespace LB12
             dataGridView1.Rows[3].Cells[3].Value = count_per;
             dataGridView1.Rows[3].Cells[4].Value = EndTime;
         }
-        private void QuickSort(int[] arr3,int left,int right)
+        private void QuickSort(int[] arr3,int left,int right,int compare,int count_per)
         {
-            if (left >= right) return;
             int left1 = left, right1 = right;
             int middle = (left1 + right1) / 2;
             while (left1 <= right1)
             {
                 while (arr3[left1] < arr3[middle])
+                {
                     left1++;
+                    compare++;
+                }
+                compare++;
                 while (arr3[right1] > arr3[middle])
-                    right1--;
-                (arr3[left1], arr3[right1]) = (arr3[right1], arr3[left1]);
+                {
+                    right1--; compare++;
+                }
+                compare++;
+                if (left1 <= right1)
+                {
+                    (arr3[left1], arr3[right1]) = (arr3[right1], arr3[left1]);
+                    count_per++; left1++; right1--;
+                }
             }
-            if (left<right1) QuickSort(arr3,left, right1);
-            if(left1<right) QuickSort(arr3, left1, right);
+            if (left<right1) QuickSort(arr3,left, right1,compare,count_per);
+            if(left1<right) QuickSort(arr3, left1, right,compare,count_per);
+            dataGridView1.Rows[4].Cells[2].Value = compare;
+            dataGridView1.Rows[4].Cells[3].Value = count_per;
         }
         private void tablewrite()
         {
