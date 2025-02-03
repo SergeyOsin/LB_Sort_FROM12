@@ -116,15 +116,12 @@ namespace LB12
         }
         private void tablewrite()
         {
+            dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowCount = 7;
             dataGridView1.ColumnCount = 6;
-            dataGridView1.Rows[0].Cells[1].Value = "Обмен";
-            dataGridView1.Rows[1].Cells[1].Value = "Выбор";
-            dataGridView1.Rows[2].Cells[1].Value = "Включение";
-            dataGridView1.Rows[3].Cells[1].Value = "Шелла";
-            dataGridView1.Rows[4].Cells[1].Value = "Быстрая";
-            dataGridView1.Rows[5].Cells[1].Value = "Линейная";
-            dataGridView1.Rows[6].Cells[1].Value = "Встроенная";
+            string[] name_sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+                dataGridView1.Rows[i].Cells[1].Value = name_sorts[i];
             dataGridView1.Columns[1].DefaultCellStyle.BackColor = Color.CornflowerBlue;
             dataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.CornflowerBlue;
         }
