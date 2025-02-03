@@ -112,13 +112,16 @@ namespace LB12
             int StartTime = Environment.TickCount;
             for(int i = 1; i < Size_Array; i++)
             {
-                for (int j = i;  j > 0 && unsortedarray1[j]<unsortedarray1[j-1]; j--)
+                for (int j = i;  j > 0;j--)
                 {
                     compare++;
-                    count_per++;
-                    (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
-                }
-                count_per++;   
+                    if (unsortedarray1[j] < unsortedarray1[j - 1])
+                    {
+                        count_per++;
+                        (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
+                    }
+                    else break;
+                }  
             }
             int EndTime = Environment.TickCount - StartTime;
             bool sorted = true;
