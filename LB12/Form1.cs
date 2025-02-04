@@ -110,20 +110,19 @@ namespace LB12
         {
             int count_per = 0, compare = 0;
             int StartTime = Environment.TickCount;
+            int minIndex = 0;
+            for (int k = 1; k < Size_Array; k++)
+                if (unsortedarray1[k] < unsortedarray1[minIndex])
+                    minIndex = k;
+            (unsortedarray1[0], unsortedarray1[minIndex]) = (unsortedarray1[minIndex], unsortedarray1[0]);
             for(int i = 1; i < Size_Array; i++)
             {
-                for (int j = i;  j >0; j--)
+                int value = unsortedarray1[i];
+                int j;
+                for (j = i - 1; unsortedarray1[j] > value; j--)
                 {
-                    compare++;
-                    if (unsortedarray1[j] < unsortedarray1[j - 1])
-                    {
-                        
-                        (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
-                         count_per++;
-                    }
-                    else break;                    
+                    unsortedarray1[j + 1] = unsortedarray1[j];
                 }
-                count_per++;
             }
             int EndTime = Environment.TickCount - StartTime;
             dataGridView1.Rows[2].Cells[2].Value = compare;
