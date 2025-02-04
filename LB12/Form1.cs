@@ -110,35 +110,42 @@ namespace LB12
         {
             int count_per = 0, compare = 0;
             int StartTime = Environment.TickCount;
-            for(int i = 1; i < Size_Array; i++)
+            int minindex = 0;
+            for(int j = 1; j < Size_Array; j++)
             {
-                for (int j = i;  j > 0;j--)
+                if (unsortedarray1[j] < unsortedarray1[minindex])
+                    minindex = j;
+            }
+            (unsortedarray1[0], unsortedarray1[minindex]) = (unsortedarray1[minindex], unsortedarray1[0]);
+            for(int i = 2; i < Size_Array; i++)
+            {
+                int key = unsortedarray1[i];
+                int j;
+                for (j=i-1;  unsortedarray1[j]>key;j--,compare++)
                 {
-                    compare++;
-                    if (unsortedarray1[j] < unsortedarray1[j - 1])
-                    {
-                        count_per++;
-                        (unsortedarray1[j], unsortedarray1[j - 1]) = (unsortedarray1[j - 1], unsortedarray1[j]);
-                    }
-                    else break;
-                }  
+                    unsortedarray1[j + 1] = unsortedarray1[j];
+                    count_per++;
+                }
+                unsortedarray1[j + 1] = key;
+                compare++;
             }
             int EndTime = Environment.TickCount - StartTime;
-            bool sorted = true;
-            for(int i = 1; i < Size_Array; i++)
-            {
-                if (unsortedarray1[i] < unsortedarray1[i - 1])
-                {
-                    sorted = false;
-                    break;
-                }
-            }
             dataGridView1.Rows[2].Cells[2].Value = compare;
             dataGridView1.Rows[2].Cells[3].Value = count_per;
             dataGridView1.Rows[2].Cells[4].Value = EndTime;
-            dataGridView1.Rows[2].Cells[5].Value = (sorted) ? "Да" : "Нет";
+            dataGridView1.Rows[2].Cells[5].Value = (isSorted(unsortedarray1,Size_Array)) ? "Да" : "Нет";
         }
-        
+        private bool isSorted(int[] array1,int Size_ar)
+        {
+            for (int i = 1; i < Size_ar; i++)
+            {
+                if (array1[i] <array1[i - 1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private void tablewrite()
         {
             dataGridView1.AllowUserToAddRows = false;
