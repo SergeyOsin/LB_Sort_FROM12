@@ -60,6 +60,13 @@ namespace LB12
             }
             else clearcells(4);
         }
+        private bool isSorted(int[]arr)
+        {
+            for (int i = 1; i < arr.Length; i++)
+                if (arr[i] < arr[i - 1])
+                    return false;
+            return true;
+        }
          private void BubbleSort(int Size_Array, int[]unarray)
         {
             int count_per = 0, compare = 0;
@@ -119,10 +126,13 @@ namespace LB12
             {
                 int value = unsortedarray1[i];
                 int j;
-                for (j = i - 1; unsortedarray1[j] > value; j--)
+                for (j = i - 1; unsortedarray1[j] > value; j--,compare++)
                 {
                     unsortedarray1[j + 1] = unsortedarray1[j];
+                    count_per++;
                 }
+                compare++;
+                unsortedarray1[j + 1] = value;
             }
             int EndTime = Environment.TickCount - StartTime;
             dataGridView1.Rows[2].Cells[2].Value = compare;
