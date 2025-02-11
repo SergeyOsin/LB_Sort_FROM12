@@ -150,16 +150,15 @@ namespace LB12
             {
                 for(int i = step; i < Size_ar; i++)
                 {
-                    for (int j = i;j>=step;j-=step, compare++)
+                    int value = arr1[i];
+                    int j;
+                    for (j = i-step;j>=0 && arr1[j]>value;j-=step, compare++)
                     {
-                        if (arr1[j] < arr1[j - step])
-                        {
-                            count_per++;
-                            (arr1[j], arr1[j - step]) = (arr1[j - step], arr1[j]);
-                        }
-                        else break;
+                        arr1[j + step] = arr1[j];
+                        count_per++;
                     }
-                    count_per++;
+                    compare++;
+                    arr1[j+step] = value;
                 }
                 step /= 2;
             }
