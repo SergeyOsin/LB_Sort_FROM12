@@ -36,19 +36,31 @@ namespace LB12
             int[] array = new int[Size_Array];
             for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, Size_Array);
             int[] arr = (int[])array.Clone();
-            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value)) BubbleSort(Size_Array, arr);
+            if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value))
+            {
+                BubbleSort(Size_Array, arr);
+                dataGridView1.Rows[0].Cells[5].Value = (isSorted(arr)) ? "Да" : "Нет";
+            }
             else clearcells(0);
             int[] arr_1 = (int[])array.Clone();
             int[] arrayCopy = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
+            {
                 DirectConnection(Size_Array, arr_1);
+                dataGridView1.Rows[0].Cells[5].Value = (isSorted(arr_1)) ? "Да" : "Нет";
+            }
             else clearcells(1);
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
+            {
                 ChooseSort(Size_Array, arrayCopy);
+                dataGridView1.Rows[2].Cells[5].Value = (isSorted(arrayCopy)) ? "Да" : "Нет";
+            }
             else clearcells(2);
             int[] arr2 = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[3].Cells[0].Value))
+            {
                 Sort_Shell(Size_Array, arr2);
+            }
             else clearcells(3);
             int[] arr3 = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[4].Cells[0].Value))
@@ -166,6 +178,7 @@ namespace LB12
             dataGridView1.Rows[3].Cells[2].Value = compare;
             dataGridView1.Rows[3].Cells[3].Value = count_per;
             dataGridView1.Rows[3].Cells[4].Value = EndTime;
+            dataGridView1.Rows[3].Cells[5].Value = (isSorted(arr1)) ? "Да" : "Нет";
         }
         private void QuickSort(int[] arr3,int left,int right,int compare,int count_per)
         {
@@ -199,7 +212,7 @@ namespace LB12
         {
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.RowCount = 7;
-            dataGridView1.ColumnCount = 5;
+            dataGridView1.ColumnCount = 6;
             string[] name_sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
             for (int i = 0; i < dataGridView1.RowCount; i++)
                 dataGridView1.Rows[i].Cells[1].Value = name_sorts[i];
