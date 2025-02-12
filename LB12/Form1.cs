@@ -203,9 +203,10 @@ namespace LB12
                 }
                 (arr3[i], arr3[left]) = (arr3[left], arr3[i]);
                 count_per0++;
+                QuickSort(arr3, i+1, right);
+                QuickSort(arr3, 0,i- 1);
             }
-            QuickSort(arr3, left + 1, right);
-            QuickSort(arr3, 0, left - 1);
+            
         }
         
         
