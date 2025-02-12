@@ -40,6 +40,7 @@
             вв = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            com = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -56,7 +57,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(523, 329);
+            numericUpDown1.Location = new Point(595, 332);
             numericUpDown1.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -68,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(320, 330);
+            label2.Location = new Point(392, 333);
             label2.Name = "label2";
             label2.Size = new Size(197, 30);
             label2.TabIndex = 4;
@@ -77,7 +78,7 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(804, 322);
+            button1.Location = new Point(953, 330);
             button1.Name = "button1";
             button1.Size = new Size(104, 42);
             button1.TabIndex = 5;
@@ -97,11 +98,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { checkbox, Сравнения, вв, Column1, Column2 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { checkbox, Сравнения, вв, Column1, Column2, com });
             dataGridView1.Location = new Point(2, 42);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(906, 268);
+            dataGridView1.Size = new Size(1055, 268);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -143,11 +144,18 @@
             Column2.Name = "Column2";
             Column2.Width = 165;
             // 
+            // com
+            // 
+            com.HeaderText = "Отсортировано?";
+            com.MinimumWidth = 8;
+            com.Name = "com";
+            com.Width = 150;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(910, 372);
+            ClientSize = new Size(1061, 372);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -176,5 +184,6 @@
         private DataGridViewTextBoxColumn вв;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn com;
     }
 }
