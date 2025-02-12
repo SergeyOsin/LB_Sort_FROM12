@@ -71,6 +71,8 @@ namespace LB12
                 int StartTime = Environment.TickCount;
                 QuickSort(arr3, 0, Size_Array - 1);
                 int EndTime = Environment.TickCount - StartTime;
+                dataGridView1.Rows[4].Cells[2].Value = compare0;
+                dataGridView1.Rows[4].Cells[3].Value = count_per0;
                 dataGridView1.Rows[4].Cells[4].Value = EndTime;
                 dataGridView1.Rows[4].Cells[5].Value = (isSorted(arr3)) ? "Да" : "Нет";
             }
@@ -203,8 +205,8 @@ namespace LB12
                 }
                 (arr3[i], arr3[left]) = (arr3[left], arr3[i]);
                 count_per0++;
-                QuickSort(arr3, i+1, right);
-                QuickSort(arr3, 0,i- 1);
+                QuickSort(arr3, left, i-1);
+                QuickSort(arr3, i+1,right);
             }
             
         }
