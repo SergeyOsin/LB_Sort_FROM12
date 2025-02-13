@@ -77,6 +77,14 @@ namespace LB12
                 dataGridView1.Rows[4].Cells[5].Value = (isSorted(arr3)) ? "Да" : "Нет";
             }
             else clearcells(4);
+            int[] arrayforLineSort = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[5].Cells[0].Value))
+                LineSort(arrayforLineSort);
+            else clearcells(5);
+            int[] arrayBuiltInFunc = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[6].Cells[0].Value))
+                BuiltInFunc(arrayBuiltInFunc);
+            else clearcells(6);
             
         }
         private bool isSorted(int[]arr)
@@ -210,7 +218,45 @@ namespace LB12
             }
             
         }
-        
+        private void LineSort(int[] array1)
+        {
+            int compare = 0, count_per = 0;
+            int StartTime = Environment.TickCount;
+            int[] arraycount = new int[array1.Length];
+            for (int i = 0; i < array1.Length; i++) {
+                arraycount[array1[i]]++;
+                count_per++;
+            }
+            for(int elem = 0, count = 0; elem < array1.Length; elem++)
+            {
+                compare++;
+                if (arraycount[elem] > 0)
+                {
+                    for (int i = count; i < arraycount[elem] + count; i++)
+                    {
+                        count_per++;
+                        array1[i] = elem;
+                    }
+                    count += arraycount[elem];
+                }
+            }
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[5].Cells[2].Value = compare;
+            dataGridView1.Rows[5].Cells[3].Value = count_per;
+            dataGridView1.Rows[5].Cells[4].Value = EndTime;
+            dataGridView1.Rows[5].Cells[5].Value = (isSorted(array1)) ? "Да" : "Нет";
+        }
+
+        private void BuiltInFunc(int[] array2)
+        {
+            int StartTime = Environment.TickCount;
+            Array.Sort(array2);
+            int EndTime = Environment.TickCount - StartTime;
+            dataGridView1.Rows[6].Cells[2].Value = "-";
+            dataGridView1.Rows[6].Cells[3].Value = "-";
+            dataGridView1.Rows[6].Cells[4].Value = EndTime;
+            dataGridView1.Rows[6].Cells[5].Value = (isSorted(array2)) ? "Да" : "Нет";
+        }
         
         private void tablewrite()
         {
