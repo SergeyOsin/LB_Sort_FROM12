@@ -49,7 +49,7 @@ namespace LB12
             if (Convert.ToBoolean(dataGridView1.Rows[1].Cells[0].Value))
             {
                 ChooseSort(Size_Array, arrayCopy);
-                dataGridView1.Rows[0].Cells[5].Value = (isSorted(arrayCopy)) ? "Да" : "Нет";
+                dataGridView1.Rows[1].Cells[5].Value = (isSorted(arrayCopy)) ? "Да" : "Нет";
             }
             else clearcells(1);
             if (Convert.ToBoolean(dataGridView1.Rows[2].Cells[0].Value))
@@ -230,15 +230,12 @@ namespace LB12
             for(int elem = 0, count = 0; elem < array1.Length; elem++)
             {
                 compare++;
-                if (arraycount[elem] > 0)
+                for (int i = count; i < arraycount[elem] + count; i++)
                 {
-                    for (int i = count; i < arraycount[elem] + count; i++)
-                    {
-                        count_per++;
-                        array1[i] = elem;
-                    }
-                    count += arraycount[elem];
+                    count_per++;
+                    array1[i] = elem;
                 }
+                count += arraycount[elem];
             }
             int EndTime = Environment.TickCount - StartTime;
             dataGridView1.Rows[5].Cells[2].Value = compare;
