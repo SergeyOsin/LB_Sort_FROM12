@@ -17,12 +17,19 @@ namespace LB12
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
+        }
+        private void writetoTable(int numb_row,int compare,int count_per,int time, int[]arr)
+        {
+            dataGridView1.Rows[numb_row].Cells[2].Value = compare;
+            dataGridView1.Rows[numb_row].Cells[3].Value = count_per;
+            dataGridView1.Rows[numb_row].Cells[4].Value = time;
+            dataGridView1.Rows[numb_row].Cells[5].Value = (isSorted(arr)) ? "Да" : "Нет";
         }
         private void clearcells(int id)
         {
@@ -39,10 +46,7 @@ namespace LB12
             for (int i = 0; i < Size_Array; i++) array[i] = rd.Next(0, Size_Array);
             int[] arr = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[0].Cells[0].Value))
-            {
                 BubbleSort(Size_Array, arr);
-                dataGridView1.Rows[0].Cells[5].Value = (isSorted(arr)) ? "Да" : "Нет";
-            }
             else clearcells(0);
             int[] arr_1 = (int[])array.Clone();
             int[] arrayCopy = (int[])array.Clone();
@@ -85,7 +89,10 @@ namespace LB12
             if (Convert.ToBoolean(dataGridView1.Rows[6].Cells[0].Value))
                 BuiltInFunc(arrayBuiltInFunc);
             else clearcells(6);
-            
+            int[] arraypyramidal = (int[])array.Clone();
+            if (Convert.ToBoolean(dataGridView1.Rows[7].Cells[0].Value))
+                pyramidalsort(arraypyramidal);
+            else clearcells(7);
         }
         private bool isSorted(int[]arr)
         {
@@ -119,6 +126,7 @@ namespace LB12
             dataGridView1.Rows[0].Cells[2].Value = compare;
             dataGridView1.Rows[0].Cells[3].Value = count_per;
             dataGridView1.Rows[0].Cells[4].Value = EndTime;
+            dataGridView1.Rows[0].Cells[5].Value = (isSorted(unarray)) ? "Да" : "Нет";
         }
         private void ChooseSort(int Size_Array, int[] unarray)
         {
@@ -191,9 +199,7 @@ namespace LB12
                 step /= 2;
             }
             int EndTime = Environment.TickCount - StartTime;
-            dataGridView1.Rows[3].Cells[2].Value = compare;
-            dataGridView1.Rows[3].Cells[3].Value = count_per;
-            dataGridView1.Rows[3].Cells[4].Value = EndTime;
+            writetoTable(3, compare, count_per, EndTime, arr1);
         }
         private void QuickSort(int[] arr3,int left,int right)
         {
@@ -238,10 +244,7 @@ namespace LB12
                 count += arraycount[elem];
             }
             int EndTime = Environment.TickCount - StartTime;
-            dataGridView1.Rows[5].Cells[2].Value = compare;
-            dataGridView1.Rows[5].Cells[3].Value = count_per;
-            dataGridView1.Rows[5].Cells[4].Value = EndTime;
-            dataGridView1.Rows[5].Cells[5].Value = (isSorted(array1)) ? "Да" : "Нет";
+            writetoTable(5, compare, count_per, EndTime, array1);
         }
 
         private void BuiltInFunc(int[] array2)
@@ -254,13 +257,21 @@ namespace LB12
             dataGridView1.Rows[6].Cells[4].Value = EndTime;
             dataGridView1.Rows[6].Cells[5].Value = (isSorted(array2)) ? "Да" : "Нет";
         }
+
+        private void pyramidalsort(int[] array3)
+        {
+            int compare = 0, count_per = 0;
+            int StartTime = Environment.TickCount;
+            int EndTime = Environment.TickCount - StartTime;
+            writetoTable(7, compare, count_per, EndTime, array3);
+        }
         
         private void tablewrite()
         {
             dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.RowCount = 7;
+            dataGridView1.RowCount = 8;
             dataGridView1.ColumnCount = 6;
-            string[] name_sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
+            string[] name_sorts = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная","Пирамидальная" };
             for (int i = 0; i < dataGridView1.RowCount; i++)
                 dataGridView1.Rows[i].Cells[1].Value = name_sorts[i];
             dataGridView1.Columns[1].DefaultCellStyle.BackColor = Color.CornflowerBlue;

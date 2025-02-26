@@ -49,7 +49,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(347, 9);
+            label1.Location = new Point(347, -1);
             label1.Name = "label1";
             label1.Size = new Size(351, 30);
             label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(595, 332);
+            numericUpDown1.Location = new Point(597, 352);
             numericUpDown1.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -69,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(392, 333);
+            label2.Location = new Point(394, 350);
             label2.Name = "label2";
             label2.Size = new Size(197, 30);
             label2.TabIndex = 4;
@@ -78,7 +78,7 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(953, 330);
+            button1.Location = new Point(953, 345);
             button1.Name = "button1";
             button1.Size = new Size(104, 42);
             button1.TabIndex = 5;
@@ -87,7 +87,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(2, 325);
+            button2.Location = new Point(2, 345);
             button2.Name = "button2";
             button2.Size = new Size(157, 42);
             button2.TabIndex = 6;
@@ -99,10 +99,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { checkbox, Сравнения, вв, Column1, Column2, com });
-            dataGridView1.Location = new Point(2, 42);
+            dataGridView1.Location = new Point(2, 32);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1055, 268);
+            dataGridView1.Size = new Size(1055, 299);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -155,7 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1061, 372);
+            ClientSize = new Size(1061, 389);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
