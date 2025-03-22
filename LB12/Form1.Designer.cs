@@ -51,9 +51,9 @@
             label1.Font = new Font("Segoe UI Symbol", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(347, -1);
             label1.Name = "label1";
-            label1.Size = new Size(351, 30);
+            label1.Size = new Size(315, 30);
             label1.TabIndex = 1;
-            label1.Text = "Лабораторная работа №12-17";
+            label1.Text = "Лабораторная работа №21";
             // 
             // numericUpDown1
             // 
@@ -104,7 +104,6 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1055, 299);
             dataGridView1.TabIndex = 7;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // checkbox
             // 

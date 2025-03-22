@@ -5,25 +5,15 @@ namespace LB12
 {
     public partial class Form1 : Form
     {
+        private int compare_pyramid = 0;
+        private int count_per_pyramid = 0;
+        private int count_per0 = 0;
+        private int compare0 = 0;
         public Form1()
         {
             InitializeComponent();
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+        private void button1_Click(object sender, EventArgs e) => Application.Exit();
         private void writetoTable(int numb_row,int compare,int count_per,int time, int[]arr)
         {
             dataGridView1.Rows[numb_row].Cells[2].Value = compare;
@@ -36,8 +26,7 @@ namespace LB12
             for (int i = 2; i < dataGridView1.ColumnCount; i++)
                 dataGridView1.Rows[id].Cells[i].Value = " ";
         }
-        private int count_per0 = 0;
-        private int compare0 = 0;
+
         private void button2_Click(object sender, EventArgs e)
         {
             int Size_Array = Convert.ToInt32(numericUpDown1.Value);
@@ -258,12 +247,34 @@ namespace LB12
             dataGridView1.Rows[6].Cells[5].Value = (isSorted(array2)) ? "Да" : "Нет";
         }
 
+        private void toDown(int[] array3, int index, int size_array)
+        {
+            compare_pyramid++;
+            while (2 * index + 1 < size_array)
+            {
+                int index_j = 2 * index + 1;
+                if (index_j < size_array && array3[index_j] < array3[index_j + 1]) index_j++;
+                if (array3[index] >= array3[index_j]) break;
+                count_per_pyramid++;
+                (array3[index], array3[index_j]) = (array3[index_j], array3[index]);
+                index = index_j;
+            }
+        }
+        
         private void pyramidalsort(int[] array3)
         {
-            int compare = 0, count_per = 0;
             int StartTime = Environment.TickCount;
+            for (int i = array3.Length / 2 - 1; i >= 0; i--)
+                toDown(array3, i, array3.Length);
+            int last_ind = array3.Length - 1;
+            while (last_ind > 0)
+            {
+                (array3[last_ind], array3[0]) = (array3[0], array3[last_ind]);
+                count_per_pyramid++;
+                toDown(array3, 0, last_ind);
+            }
             int EndTime = Environment.TickCount - StartTime;
-            writetoTable(7, compare, count_per, EndTime, array3);
+            writetoTable(7, compare_pyramid, count_per_pyramid, EndTime, array3);
         }
         
         private void tablewrite()
@@ -277,9 +288,6 @@ namespace LB12
             dataGridView1.Columns[1].DefaultCellStyle.BackColor = Color.CornflowerBlue;
             dataGridView1.Columns[0].DefaultCellStyle.BackColor = Color.CornflowerBlue;
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            tablewrite();
-        }
+        private void Form1_Load(object sender, EventArgs e) => tablewrite();
     }
 }
