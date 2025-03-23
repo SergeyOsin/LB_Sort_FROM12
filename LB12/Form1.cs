@@ -5,8 +5,8 @@ namespace LB12
 {
     public partial class Form1 : Form
     {
-        private int compare_pyramid = 0;
-        private int count_per_pyramid = 0;
+        private int compare_pyramid;
+        private int count_per_pyramid;
         private int count_per0 = 0;
         private int compare0 = 0;
         public Form1()
@@ -249,11 +249,12 @@ namespace LB12
 
         private void toDown(int[] array3, int index, int size_array)
         {
-            compare_pyramid++;
-            while (2 * index + 1 < size_array)
+            while (2 * index+1 < size_array)
             {
-                int index_j = 2 * index + 1;
+                int index_j = 2 * index;
+                compare_pyramid++;
                 if (index_j < size_array && array3[index_j] < array3[index_j + 1]) index_j++;
+                compare_pyramid++;
                 if (array3[index] >= array3[index_j]) break;
                 count_per_pyramid++;
                 (array3[index], array3[index_j]) = (array3[index_j], array3[index]);
@@ -263,15 +264,19 @@ namespace LB12
         
         private void pyramidalsort(int[] array3)
         {
+            compare_pyramid = 0;
+            count_per_pyramid = 0;
+            int len = array3.Length;
             int StartTime = Environment.TickCount;
-            for (int i = array3.Length / 2 - 1; i >= 0; i--)
-                toDown(array3, i, array3.Length);
+            for (int i =len/2; i >= 0; i--)
+                toDown(array3, i, len);
             int last_ind = array3.Length - 1;
             while (last_ind > 0)
             {
                 (array3[last_ind], array3[0]) = (array3[0], array3[last_ind]);
                 count_per_pyramid++;
                 toDown(array3, 0, last_ind);
+                last_ind--;
             }
             int EndTime = Environment.TickCount - StartTime;
             writetoTable(7, compare_pyramid, count_per_pyramid, EndTime, array3);
