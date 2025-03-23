@@ -7,25 +7,9 @@ namespace LB12
     {
         const int SIZE = 100000;
         int[] array = new int[SIZE];
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        public Form1() => InitializeComponent();
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+        private void button1_Click(object sender, EventArgs e) => Application.Exit();
         private void clearcells(int id)
         {
             for (int i = 2; i < dataGridView1.ColumnCount; i++)
