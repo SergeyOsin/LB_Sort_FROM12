@@ -7,12 +7,9 @@ namespace LB12
     {
         private int compare_pyramid;
         private int count_per_pyramid;
-        private int count_per0 = 0;
-        private int compare0 = 0;
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        private int count_per_quick;
+        private int compare_quick;
+        public Form1() => InitializeComponent();
         private void button1_Click(object sender, EventArgs e) => Application.Exit();
         private void writetoTable(int numb_row,int compare,int count_per,int time, int[]arr)
         {
@@ -61,11 +58,13 @@ namespace LB12
             int[] arr3 = (int[])array.Clone();
             if (Convert.ToBoolean(dataGridView1.Rows[4].Cells[0].Value))
             {
+                count_per_quick = 0;
+                compare_quick = 0;
                 int StartTime = Environment.TickCount;
                 QuickSort(arr3, 0, Size_Array - 1);
                 int EndTime = Environment.TickCount - StartTime;
-                dataGridView1.Rows[4].Cells[2].Value = compare0;
-                dataGridView1.Rows[4].Cells[3].Value = count_per0;
+                dataGridView1.Rows[4].Cells[2].Value = compare_quick;
+                dataGridView1.Rows[4].Cells[3].Value = count_per_quick;
                 dataGridView1.Rows[4].Cells[4].Value = EndTime;
                 dataGridView1.Rows[4].Cells[5].Value = (isSorted(arr3)) ? "Да" : "Нет";
             }
@@ -90,7 +89,7 @@ namespace LB12
                     return false;
             return true;
         }
-         private void BubbleSort(int Size_Array, int[]unarray)
+        private void BubbleSort(int Size_Array, int[]unarray)
         {
             long count_per = 0, compare = 0;
             bool flag = true;
@@ -164,7 +163,6 @@ namespace LB12
             dataGridView1.Rows[2].Cells[3].Value = count_per;
             dataGridView1.Rows[2].Cells[4].Value = EndTime;
         }
-        
         private void Sort_Shell(int Size_ar, int[] arr1)
         {
             int compare = 0, count_per = 0;
@@ -198,16 +196,16 @@ namespace LB12
                 int i = left;
                 for(int j = i + 1; j <= right; j++)
                 {
-                    compare0++;
+                    compare_quick++;
                     if (arr3[j] < oporelem)
                     {
                         i++;
                         (arr3[i], arr3[j]) = (arr3[j], arr3[i]);
-                        count_per0++;
+                        count_per_quick++;
                     }
                 }
                 (arr3[i], arr3[left]) = (arr3[left], arr3[i]);
-                count_per0++;
+                count_per_quick++;
                 QuickSort(arr3, left, i-1);
                 QuickSort(arr3, i+1,right);
             }
@@ -268,7 +266,7 @@ namespace LB12
             count_per_pyramid = 0;
             int len = array3.Length;
             int StartTime = Environment.TickCount;
-            for (int i =len/2; i >= 0; i--)
+            for (int i =(len-1)/2; i >= 0; i--)
                 toDown(array3, i, len);
             int last_ind = array3.Length - 1;
             while (last_ind > 0)
