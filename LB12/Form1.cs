@@ -82,13 +82,7 @@ namespace LB12
                 pyramidalsort(arraypyramidal);
             else clearcells(7);
         }
-        private bool isSorted(int[]arr)
-        {
-            for (int i = 1; i < arr.Length; i++)
-                if (arr[i] < arr[i - 1])
-                    return false;
-            return true;
-        }
+        private bool isSorted(int[]arr) => arr.Zip(arr.Skip(1), (a, b) => a <= b).All(i => i);
         private void BubbleSort(int Size_Array, int[]unarray)
         {
             long count_per = 0, compare = 0;
@@ -209,7 +203,6 @@ namespace LB12
                 QuickSort(arr3, left, i-1);
                 QuickSort(arr3, i+1,right);
             }
-            
         }
         private void LineSort(int[] array1)
         {
@@ -251,7 +244,7 @@ namespace LB12
             {
                 int index_j = 2 * index;
                 compare_pyramid++;
-                if (index_j < size_array && array3[index_j] < array3[index_j + 1]) index_j++;
+                if (array3[index_j] < array3[index_j + 1]) index_j++;
                 compare_pyramid++;
                 if (array3[index] >= array3[index_j]) break;
                 count_per_pyramid++;
@@ -262,13 +255,12 @@ namespace LB12
         
         private void pyramidalsort(int[] array3)
         {
-            compare_pyramid = 0;
-            count_per_pyramid = 0;
+            compare_pyramid = count_per_pyramid = 0;
             int len = array3.Length;
             int StartTime = Environment.TickCount;
             for (int i =(len-1)/2; i >= 0; i--)
                 toDown(array3, i, len);
-            int last_ind = array3.Length - 1;
+            int last_ind = len - 1;
             while (last_ind > 0)
             {
                 (array3[last_ind], array3[0]) = (array3[0], array3[last_ind]);
